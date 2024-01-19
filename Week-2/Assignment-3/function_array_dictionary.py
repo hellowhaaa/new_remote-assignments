@@ -1,11 +1,10 @@
 def avg(data):
     total = 0
     times = 0
-    for content in data.keys():
-        for i in range(len(data[content])):
-            product = data[content][i]
-            total += product["price"]
-            times += 1
+    products = data['products']
+    for product in products:
+        total += product["price"]
+        times += 1
     return round((total / times), 3)
 
 
