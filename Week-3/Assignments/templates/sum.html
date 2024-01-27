@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<form method="POST" class="form">
+    <h3> This is sum page.</h3>
+    <p> Please enter a number below!</p>
+
+    <label for="number" name="number"> Number: </label>
+    <input type="text" name="number" class="number" id="text">
+    <input type="submit" value="Submit" id="get-btn" class="number">
+</form>
+
+<p class='result'>Answer: <span class="answer"></span></p>
+
+<script src="../static/script.js"></script>
+{% endblock %}
