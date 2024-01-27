@@ -7,5 +7,5 @@ def two_sum(nums, target):
             return [i, other_index]
 
 
-ans = two_sum([2, 7, 13, 18], 20)
+ans = two_sum([2, 7, 11, 15], 9)
 print(ans)
