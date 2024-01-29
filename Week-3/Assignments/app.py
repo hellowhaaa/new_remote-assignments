@@ -1,6 +1,4 @@
-from flask import (Flask, redirect, url_for, render_template,
-                   request, make_response, jsonify)
-import json
+from flask import (Flask, render_template, request, url_for,make_response, jsonify, redirect)
 
 app = Flask(__name__)
 app.secret_key = 'sdfjiohdgssdkghnlsdhidfs'
@@ -34,25 +32,21 @@ def sum():
 
 @app.route('/myName', methods=['GET', 'POST'])
 def myName():
-    info = get_saved_data()
-    return render_template('myname.html', saves=info)
+    name = request.cookies.get('name')
+    return render_template("myname.html", name=name)
 
 
-@app.route('/trackName', methods=['POST'])
+
+@app.route('/trackName', methods=['POST','GET'])
 def trackName():
-    response = make_response(redirect(url_for('myName')))
-    info = get_saved_data()
-    info.update(dict(request.form.items()))
-    response.set_cookie('Name1', json.dumps(info))
-    return response
-
-
-def get_saved_data():
-    try:
-        info = json.loads(request.cookies.get('Name1'))
-    except TypeError:
-        info = {}
-    return info
+    if request.method == 'POST':
+        name = request.form['name']
+        response = make_response(redirect(url_for('myName')))
+        response.set_cookie('name', name)
+        return response
+    else:
+        name = request.args.get("name")
+        return render_template('myname.html', name=name)
 
 
 if __name__ == "__main__":
