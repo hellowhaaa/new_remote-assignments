@@ -26,22 +26,21 @@ def data():
 
 
 @app.route('/sum.html', methods=['GET', 'POST'])
-def sum():
+def sum_():
     return render_template('sum.html')
 
 
 @app.route('/myName', methods=['GET', 'POST'])
-def myName():
+def my_name():
     name = request.cookies.get('name')
     return render_template("myname.html", name=name)
 
 
-
 @app.route('/trackName', methods=['POST','GET'])
-def trackName():
+def track_name():
     if request.method == 'POST':
         name = request.form['name']
-        response = make_response(redirect(url_for('myName')))
+        response = make_response(redirect(url_for('my_name')))
         response.set_cookie('name', name)
         return response
     else:
