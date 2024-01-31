@@ -12,7 +12,7 @@ def index():
 
 @app.route('/data', methods=['GET', 'POST'])
 def data():
-    ls = []
+    # dic = {}
     number = request.args.get('number')
     if number is None:
         number = 'Lack of Parameter'
@@ -21,8 +21,8 @@ def data():
     else:
         number = int(number)
         number = ((1+number) * number) // 2
-    ls.append(number)
-    return jsonify(ls[0])
+    # dic['number'] = number
+    return jsonify(number)  # 放list dic都可以
 
 
 @app.route('/sum.html', methods=['GET', 'POST'])
