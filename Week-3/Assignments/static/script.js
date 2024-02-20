@@ -10,6 +10,12 @@ function makeRequest() {
   }
   xhr.onreadystatechange = alertContents;
   xhr.open("GET", "http://127.0.0.1:3000/data?number=" + number, true);
+  // open method initialize the request
+  // 1.what kind of the request
+  // 2. path of the data
+  // 3. if it's asynchronous
+
+  // xhr.onload -> handle the response
   xhr.send();
   function alertContents() {
     try {
